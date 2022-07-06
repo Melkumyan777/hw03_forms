@@ -13,7 +13,6 @@ from .models import Post
 User = get_user_model()
 
 
-
 def index(request):
     posts = Post.objects.all()[:10]
     paginator = Paginator(posts, 10)
@@ -73,11 +72,11 @@ def post_create(request):
             form.author = request.user
             form.save()
             username = form.author
-            return redirect(f'/profile/{username}/') 
+            return redirect(f'/profile/{username}/')
         return render(request, 'posts/create_post.html', {'form': form})
     else:
         form = PostForm()
-        return render(request, 'posts/create_post.html', {'form': form} )
+        return render(request, 'posts/create_post.html', {'form': form})
 
 
 def post_edit(request, post_id):
@@ -93,12 +92,12 @@ def post_edit(request, post_id):
                 return redirect(f'/posts/{post.id}/')
             context = {
                 'form': form,
-                'is_edit': is_edit,}
+                'is_edit': is_edit}
             return render(request, 'post_edit', context)
         else:
             form = PostForm(instance=post)
             context = {
                 'form': form,
-                'is_edit': is_edit,}
+                'is_edit': is_edit}
             return render(request, 'posts/create_post.html', context)
     return redirect('index')
