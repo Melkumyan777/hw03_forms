@@ -1,5 +1,3 @@
-
-from collections import UserDict
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.core.paginator import Paginator
@@ -8,10 +6,12 @@ from .forms import PostForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
-User = get_user_model()
-
 from .models import Group, User
 from .models import Post
+
+
+User = get_user_model()
+
 
 
 def index(request):
@@ -58,13 +58,11 @@ def profile(request, username):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    #posts = post.group.posts.all()
-    #posts_count = posts.count()
     context = {
         'post': post,
-        #'posts_count': posts_count,
     }
     return render(request, 'posts/post_detail.html', context)
+
 
 @login_required
 def post_create(request):
