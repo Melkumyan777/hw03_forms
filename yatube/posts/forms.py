@@ -7,7 +7,7 @@ class PostForm(ModelForm):
     class Meta:
         model = Post
         fields = ['group', 'text']
-        labes = {
+        labels = {
             'text': 'Текст поста',
             'group': 'Группа',
         }
