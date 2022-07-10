@@ -9,7 +9,7 @@
           <ul>
             <li>
               Автор: {{ user.get_full_name }}
-              <a href="{% url 'posts:profile'%}">>все посты пользователя</a>
+              <a href="{% url 'posts:profile' post.id %}">>все посты пользователя</a>
             </li>
             <li>
               Дата публикации: {{ post.pub_date|date:'d E Y' }}
@@ -17,10 +17,10 @@
           </ul>
           <p>
           </p>
-          <a href="{% url 'posts:post_detail'%}">подробная информация </a>
+          <a href="{% url 'posts:post_detail' post.id %}">подробная информация </a>
         </article>       
         {% if post.group %}   
-          <a href="{% url 'posts:group_list'%}">все записи группы</a>
+          <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
         {% endif %}        
         <div>{% include 'posts/includes/paginator.html' %}</div>
       </div>
