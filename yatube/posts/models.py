@@ -29,3 +29,5 @@ class Post(models.Model):
         return self.text
 
 
+
+
