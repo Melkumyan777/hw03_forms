@@ -29,7 +29,7 @@ def index(request):
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
     posts = group.posts.all()
-    paginator = Paginator(posts,  settings.FOR_PAGINATOR)
+    paginator = Paginator(posts, settings.FOR_PAGINATOR)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
@@ -86,6 +86,7 @@ def post_edit(request, post_id):
             return redirect('posts:post_detail', post_id=post_id)
         context = {
                 'form': form,
-                'is_edit': is_edit}
-        return render(request, 'posts/create_post.html', context)      
+                'is_edit': is_edit
+                }
+        return render(request, 'posts/create_post.html', context)  
     return render(request, 'index', context)
