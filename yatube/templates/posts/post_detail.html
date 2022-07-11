@@ -3,7 +3,6 @@
   Пост {{ post_detail.text|truncatechars:30 }}
 {% endblock %}
 {% block content %} 
-    <main>
       <div class="container py-5">
         <div class="row">
           <aside class="col-12 col-md-3">
@@ -20,10 +19,10 @@
                 Автор: {{ post.author.get_full_name }}
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center">
-                Всего постов автора: {{posts_count}}
+                Всего постов автора: {{ posts_count }}
               </li>
               <li class="list-group-item">
-                <a href="{%url 'posts:profile' post.author %}">
+                <a href="{% url 'posts:profile' post.author %}">
                   все посты пользователя
                 </a>
               </li>
@@ -38,6 +37,5 @@
           </article>
         </div>     
       </div>
-    </main>
 {% endblock %}
 
